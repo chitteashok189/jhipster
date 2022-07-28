@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-zone-heading" data-cy="ZoneCreateUpdateHeading" jhiTranslate="blogApp.zone.home.createOrEditLabel">
+        Create or edit a Zone
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="blogApp.zone.zoneID" for="field_zoneID">Zone ID</label>
+          <input type="text" class="form-control" name="zoneID" id="field_zoneID" data-cy="zoneID" formControlName="zoneID" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="blogApp.zone.zoneType" for="field_zoneType">Zone Type</label>
+          <select class="form-control" name="zoneType" formControlName="zoneType" id="field_zoneType" data-cy="zoneType">
+            <option [ngValue]="null">{{ 'blogApp.ZoneType.null' | translate }}</option>
+            <option *ngFor="let zoneType of zoneTypeValues" [value]="zoneType">{{ 'blogApp.ZoneType.' + zoneType | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="blogApp.zone.manufacturer" for="field_manufacturer">Manufacturer</label>
+          <input
+            type="text"
+            class="form-control"
+            name="manufacturer"
+            id="field_manufacturer"
+            data-cy="manufacturer"
+            formControlName="manufacturer"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="blogApp.zone.protectedFID" for="field_protectedFID">Protected FID</label>
+          <input
+            type="text"
+            class="form-control"
+            name="protectedFID"
+            id="field_protectedFID"
+            data-cy="protectedFID"
+            formControlName="protectedFID"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="blogApp.zone.protectedFarm" for="field_protectedFarm">Protected Farm</label>
+          <select
+            class="form-control"
+            id="field_protectedFarm"
+            data-cy="protectedFarm"
+            name="protectedFarm"
+            formControlName="protectedFarm"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                protectedFarmOption.id === editForm.get('protectedFarm')!.value?.id
+                  ? editForm.get('protectedFarm')!.value
+                  : protectedFarmOption
+              "
+              *ngFor="let protectedFarmOption of protectedFarmsSharedCollection; trackBy: trackProtectedFarmById"
+            >
+              {{ protectedFarmOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+{
+  "applications": "*",
+  "changelogDate": "20220726091228",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "farm",
+  "fields": [
+    {
+      "fieldName": "farmID",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "pformID",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "farmName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "farmType",
+      "fieldType": "FarmType",
+      "fieldValues": "PFAL,PFNL"
+    },
+    {
+      "fieldName": "farmSubType",
+      "fieldType": "SubType",
+      "fieldValues": "Pico,CEA_PF_1250P,Nano,CEA_PF_2500P,Micro,CEA_PF_5000P,Giga,CEA_PF_120000P,Tera,CEA_PF_60000P,Mega,CEA_PF_30000P"
+    },
+    {
+      "fieldName": "farmDescription",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Farm",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "protectedFarm",
+      "otherEntityRelationshipName": "farm",
+      "relationshipName": "protectedFarm",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

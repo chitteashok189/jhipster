@@ -1,0 +1,129 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-protected-farm-heading"
+        data-cy="ProtectedFarmCreateUpdateHeading"
+        jhiTranslate="blogApp.protectedFarm.home.createOrEditLabel"
+      >
+        Create or edit a Protected Farm
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="blogApp.protectedFarm.protectedFarmID" for="field_protectedFarmID"
+            >Protected Farm ID</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="protectedFarmID"
+            id="field_protectedFarmID"
+            data-cy="protectedFarmID"
+            formControlName="protectedFarmID"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="blogApp.protectedFarm.protectedFarmName" for="field_protectedFarmName"
+            >Protected Farm Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="protectedFarmName"
+            id="field_protectedFarmName"
+            data-cy="protectedFarmName"
+            formControlName="protectedFarmName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="blogApp.protectedFarm.protectedFarmType" for="field_protectedFarmType"
+            >Protected Farm Type</label
+          >
+          <select
+            class="form-control"
+            name="protectedFarmType"
+            formControlName="protectedFarmType"
+            id="field_protectedFarmType"
+            data-cy="protectedFarmType"
+          >
+            <option [ngValue]="null">{{ 'blogApp.ProFarmType.null' | translate }}</option>
+            <option *ngFor="let proFarmType of proFarmTypeValues" [value]="proFarmType">
+              {{ 'blogApp.ProFarmType.' + proFarmType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="blogApp.protectedFarm.protectedFarmSubType" for="field_protectedFarmSubType"
+            >Protected Farm Sub Type</label
+          >
+          <select
+            class="form-control"
+            name="protectedFarmSubType"
+            formControlName="protectedFarmSubType"
+            id="field_protectedFarmSubType"
+            data-cy="protectedFarmSubType"
+          >
+            <option [ngValue]="null">{{ 'blogApp.ProSubType.null' | translate }}</option>
+            <option *ngFor="let proSubType of proSubTypeValues" [value]="proSubType">
+              {{ 'blogApp.ProSubType.' + proSubType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="blogApp.protectedFarm.protectedFarmDescription" for="field_protectedFarmDescription"
+            >Protected Farm Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="protectedFarmDescription"
+            id="field_protectedFarmDescription"
+            data-cy="protectedFarmDescription"
+            formControlName="protectedFarmDescription"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="blogApp.protectedFarm.farm" for="field_farm">Farm</label>
+          <select class="form-control" id="field_farm" data-cy="farm" name="farm" formControlName="farm">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="farmOption.id === editForm.get('farm')!.value?.id ? editForm.get('farm')!.value : farmOption"
+              *ngFor="let farmOption of farmsSharedCollection; trackBy: trackFarmById"
+            >
+              {{ farmOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

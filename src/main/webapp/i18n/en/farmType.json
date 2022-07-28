@@ -1,0 +1,9 @@
+{
+  "blogApp": {
+    "FarmType": {
+      "null": "",
+      "PFAL": "PFAL",
+      "PFNL": "PFNL"
+    }
+  }
+}

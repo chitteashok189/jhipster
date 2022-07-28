@@ -1,0 +1,51 @@
+{
+  "applications": "*",
+  "changelogDate": "20220726091229",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "protected_farm",
+  "fields": [
+    {
+      "fieldName": "protectedFarmID",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "protectedFarmName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "protectedFarmType",
+      "fieldType": "ProFarmType",
+      "fieldValues": "SN_Shade,Net,NVPH_Naturally,Ventilated,Polyhouse,PFAL_Protected,Farming,With,Artificial,Lighting,PFNL_Protected,Natural"
+    },
+    {
+      "fieldName": "protectedFarmSubType",
+      "fieldType": "ProSubType",
+      "fieldValues": "Femto,Pico,Nano,Micro,Giga,Tera,Mega"
+    },
+    {
+      "fieldName": "protectedFarmDescription",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ProtectedFarm",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "zone",
+      "otherEntityRelationshipName": "protectedFarm",
+      "relationshipName": "zone",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "farm",
+      "otherEntityRelationshipName": "protectedFarm",
+      "relationshipName": "farm",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

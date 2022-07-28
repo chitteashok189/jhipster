@@ -1,0 +1,25 @@
+export enum SubType {
+  Pico = 'Pico',
+
+  CEA_PF_1250P = 'CEA_PF_1250P',
+
+  Nano = 'Nano',
+
+  CEA_PF_2500P = 'CEA_PF_2500P',
+
+  Micro = 'Micro',
+
+  CEA_PF_5000P = 'CEA_PF_5000P',
+
+  Giga = 'Giga',
+
+  CEA_PF_120000P = 'CEA_PF_120000P',
+
+  Tera = 'Tera',
+
+  CEA_PF_60000P = 'CEA_PF_60000P',
+
+  Mega = 'Mega',
+
+  CEA_PF_30000P = 'CEA_PF_30000P',
+}

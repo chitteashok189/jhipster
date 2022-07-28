@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="zone">
+      <h2 data-cy="zoneDetailsHeading"><span jhiTranslate="blogApp.zone.detail.title">Zone</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ zone.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.zone.zoneID">Zone ID</span></dt>
+        <dd>
+          <span>{{ zone.zoneID }}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.zone.zoneType">Zone Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'blogApp.ZoneType.' + zone.zoneType }}">{{ zone.zoneType }}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.zone.manufacturer">Manufacturer</span></dt>
+        <dd>
+          <span>{{ zone.manufacturer }}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.zone.protectedFID">Protected FID</span></dt>
+        <dd>
+          <span>{{ zone.protectedFID }}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.zone.protectedFarm">Protected Farm</span></dt>
+        <dd>
+          <div *ngIf="zone.protectedFarm">
+            <a [routerLink]="['/protected-farm', zone.protectedFarm?.id, 'view']">{{ zone.protectedFarm?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/zone', zone.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

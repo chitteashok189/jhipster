@@ -1,0 +1,29 @@
+export enum ZoneType {
+  Vertical = 'Vertical',
+
+  Rack = 'Rack',
+
+  Hydroponic = 'Hydroponic',
+
+  NFT = 'NFT',
+
+  Table = 'Table',
+
+  Dutch = 'Dutch',
+
+  Bucket = 'Bucket',
+
+  Bench = 'Bench',
+
+  Ebb = 'Ebb',
+
+  And = 'And',
+
+  Flow = 'Flow',
+
+  Table_Single = 'Table_Single',
+
+  Layer = 'Layer',
+
+  Table_Multilayer = 'Table_Multilayer',
+}

@@ -1,0 +1,30 @@
+{
+  "blogApp": {
+    "protectedFarm": {
+      "home": {
+        "title": "Protected Farms",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Protected Farm",
+        "createOrEditLabel": "Crear o editar Protected Farm",
+        "notFound": "Ningún Protected Farms encontrado"
+      },
+      "created": "Un nuevo Protected Farm ha sido creado con el identificador {{ param }}",
+      "updated": "Un Protected Farm ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Protected Farm ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Protected Farm {{ id }}?"
+      },
+      "detail": {
+        "title": "Protected Farm"
+      },
+      "id": "ID",
+      "protectedFarmID": "Protected Farm ID",
+      "protectedFarmName": "Protected Farm Name",
+      "protectedFarmType": "Protected Farm Type",
+      "protectedFarmSubType": "Protected Farm Sub Type",
+      "protectedFarmDescription": "Protected Farm Description",
+      "zone": "Zone",
+      "farm": "Farm"
+    }
+  }
+}

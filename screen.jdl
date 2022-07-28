@@ -1,0 +1,44 @@
+entity Farm{
+FarmID UUID,
+PformID UUID,
+FarmName String,
+FarmType FarmType,
+FarmSubType SubType,
+FarmDescription String,
+}
+enum FarmType{
+PFAL, PFNL
+}
+enum SubType{
+Pico CEA_PF_1250P, Nano CEA_PF_2500P, Micro CEA_PF_5000P, 
+Giga CEA_PF_120000P, Tera CEA_PF_60000P, Mega CEA_PF_30000P
+}
+entity ProtectedFarm{
+ProtectedFarmID UUID,
+ProtectedFarmName String,
+ProtectedFarmType ProFarmType,
+ProtectedFarmSubType ProSubType,
+ProtectedFarmDescription String
+}
+enum ProFarmType{
+SN_Shade Net, NVPH_Naturally Ventilated Polyhouse,
+PFAL_Protected Farming With Artificial Lighting, 
+PFNL_Protected Farming With Natural Lighting
+}
+enum ProSubType{
+Femto, Pico, Nano, Micro, Giga, Tera, Mega
+}
+entity Zone{
+ZoneID UUID,
+ZoneType ZoneType,
+Manufacturer String,
+ProtectedFID UUID,
+}
+enum ZoneType{
+Vertical Rack, Hydroponic NFT Table, Dutch Bucket Bench, 
+Ebb And Flow Table_Single Layer, Ebb And Flow Table_Multilayer
+}
+relationship OneToMany{
+    Farm to ProtectedFarm,
+    ProtectedFarm to Zone
+}

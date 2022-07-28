@@ -1,0 +1,549 @@
+<div class="row">
+ 
+
+  <div class="col-lg-12">
+   
+
+    <div [ngSwitch]="account !== null">
+      <div class="alert alert-success" *ngSwitchCase="true">
+
+        <div class="page-content-wrapper">
+          <!-- start page content-->
+          <div class="page-content">
+      
+              <!--start breadcrumb-->
+              <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                  <div class="breadcrumb-title pe-3">Dashboard</div>
+                  <div class="ps-3">
+                      <nav aria-label="breadcrumb">
+                          <ol class="breadcrumb mb-0 p-0 align-items-center">
+                              <li class="breadcrumb-item"><a href="javascript:;">
+                                      <!-- <span name="home-outline"></span> -->
+                                  </a>
+                              </li>
+                              <li class="breadcrumb-item active" aria-current="page">Controlled Environment
+                                  Agriculture</li>
+                          </ol>
+                      </nav>
+                  </div>
+                  <div class="toolbox d-flex flex-row align-items-center gap-2">
+                      <div class="d-flex flex-wrap">
+                          <div class="d-flex align-items-center flex-nowrap">
+                              <select class="form-select ms-3">
+                                  <option value="menu_order" selected="selected">Chinnamangalaram Farm</option>
+                                  <option value="menu_order">Farm1</option>
+                                  <option value="menu_order">Farm2</option>
+      
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="ms-auto">
+                      <div class="btn-group">
+                          <button type="button" class="btn btn-outline-primary">Settings</button>
+                          <button type="button"
+                              class="btn btn-outline-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
+                              data-bs-toggle="dropdown"> <span class="visually-hidden">Toggle Dropdown</span>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"> <a
+                                  class="dropdown-item" href="javascript:;">Action</a>
+                              <a class="dropdown-item" href="javascript:;">Another action</a>
+                              <a class="dropdown-item" href="javascript:;">Something else here</a>
+                              <div class="dropdown-divider"></div> <a class="dropdown-item"
+                                  href="javascript:;">Separated link</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!--end breadcrumb-->
+
+              <div class="page-wrapper">
+                <div class="page-content">
+                  <div class="card">
+                    <div class="card-body">
+                  <ul class="nav nav-pills  mb-3" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" data-bs-toggle="pill" href="#climate" role="tab"
+                            aria-selected="true">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon">
+                                    <span name="partly-sunny-outline" class="me-1"></span>
+                                </div>
+                                <div class="tab-title">Climate</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="pill" href="#dosing" role="tab"
+                            aria-selected="false">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon">
+                                    <span name="eyedrop-outline" class="me-1"></span>
+                                </div>
+                                <div class="tab-title">Dosing</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="pill" href="#irrigation" role="tab"
+                            aria-selected="false">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon">
+                                    <span name="water-outline" class="me-1"></span>
+                                </div>
+                                <div class="tab-title">Irrigation</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                  <div class="tab-pane show active" id="climate" role="tabpanel">
+                    <div class="row">
+                        
+                        <div class="col-12 col-lg-6 col-xl-6">
+                            <div class="row">
+                                <div class="col-6 col-lg-6 col-xl-6">
+                                    <div class="card radius-10 overflow-hidden">
+                                        <div class="card-body" style="height:250px">
+                                            <p class="text-center">Air Temperature</p>
+                                          
+                                                <div echarts [options]="chartOption"
+                                                    style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                </div>
+                                                <div echarts [options]="linechartOption"
+                                          style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                              
+                                      </div>
+                                               
+                                           
+                                        </div>
+    
+                                    </div>
+    
+                                </div>
+                                <div class="col-6 col-lg-6 col-xl-6">
+                                  <div class="card radius-10">
+                                      <div class="card-body" style="height:250px">
+                                          <p class="text-center">Relative Humidity</p>
+                                          <div echarts [options]="chartOption1"
+                                          style="width:auto;height:135px;position: relative;bottom: 35px;">
+
+                                               
+                                              
+                                      </div>
+                                      <div echarts [options]="linechartOption1"
+                                      style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                          
+                                  </div>
+                                      
+                                  </div>
+                              </div>
+    
+                                </div>
+                                </div>
+                                </div>
+                                <div class="col-12 col-lg-6 col-xl-6">
+                                  <div class="row">
+                                      <div class="col-6 col-lg-6 col-xl-6">
+                                          <div class="card radius-10">
+                                              <div class="card-body" style="height:250px">
+                                                  <p class="text-center">VPD</p>
+                                                  <div echarts [options]="chartOption2"
+                                                  style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                              </div>
+                                              <div echarts [options]="linechartOption2"
+                                              style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                  
+                                          </div>
+                                          </div>
+                                      </div>
+                                      </div>
+                                      <div class="col-6 col-lg-6 col-xl-6">
+                                          <div class="card radius-10">
+                                              <div class="card-body" style="height:250px">
+                                                  <p class="text-center">Evapotranspiration</p>
+                                                  <div echarts [options]="chartOption3"
+                                                  style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                              </div>
+                                              <div echarts [options]="linechartOption3"
+                                              style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                  
+                                          </div>
+                                          </div>
+                                      </div>
+  
+                                  </div>
+
+                             
+                              </div>
+                                                                <!--end row-->
+
+
+                                
+                                </div>
+                              </div>
+                                <!-- end row -->
+
+                                <div class="row">
+                                  
+                                  <div class="col-12 col-lg-6 col-xl-6">
+                                      <div class="row">
+                                          <div class="col-6 col-lg-6 col-xl-6">
+                                              <div class="card radius-10 overflow-hidden">
+                                                  <div class="card-body" style="height:250px">
+                                                      <p class="text-center">Solar Radiation</p>
+                                                    
+                                                          <div echarts [options]="chartOption4"
+                                                              style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                          </div>
+                                                          <div echarts [options]="linechartOption4"
+                                                          style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                              
+                                                      </div>
+                                                         
+                                                     
+                                                  </div>
+              
+                                              </div>
+              
+                                          </div>
+                                          <div class="col-6 col-lg-6 col-xl-6">
+                                            <div class="card radius-10">
+                                                <div class="card-body" style="height:250px">
+                                                    <p class="text-center">Heat Index</p>
+                                                    <div echarts [options]="chartOption5"
+                                                    style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                        
+                                                </div>
+                                                <div echarts [options]="linechartOption5"
+                                                style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                    
+                                            </div>
+                                            </div>
+                                        </div>
+              
+                                          </div>
+                                          </div>
+                                          </div>
+                                          <div class="col-12 col-lg-6 col-xl-6">
+                                            <div class="row">
+                                                <div class="col-6 col-lg-6 col-xl-6">
+                                                    <div class="card radius-10">
+                                                        <div class="card-body" style="height:250px">
+                                                            <p class="text-center">Barometric Pressure</p>
+                                                            <div echarts [options]="chartOption6"
+                                                            style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                        </div>
+                                                        <div echarts [options]="linechartOption6"
+                                                        style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                            
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="col-6 col-lg-6 col-xl-6">
+                                                    <div class="card radius-10">
+                                                        <div class="card-body" style="height:250px">
+                                                            <p class="text-center">Sea Level Pressure</p>
+                                                            <div echarts [options]="chartOption7"
+                                                            style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                        </div>
+                                                        <div echarts [options]="linechartOption7"
+                                                        style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                            
+                                                    </div>
+                                                    </div>
+                                                </div>
+            
+                                            </div>
+          
+                                       
+                                        </div>
+                                                                          <!--end row-->
+          
+          
+                                          
+                                          </div>
+                                        </div>
+                                          <!-- end row -->
+
+                                          <div class="row">
+
+                                            <div class="col-12 col-lg-6 col-xl-6">
+                                                <div class="row">
+                                                    <div class="col-6 col-lg-6 col-xl-6">
+                                                        <div class="card radius-10 overflow-hidden">
+                                                            <div class="card-body" style="height:250px">
+                                                                <p class="text-center">CO2 Level</p>
+                                                                <div echarts [options]="chartOption8"
+                                                            style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                        </div>
+                                                        <div echarts [options]="linechartOption8"
+                                                        style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                            
+                                                    </div>
+                                                            </div>
+                
+                                                        </div>
+                
+                                                    </div>
+                                                    <div class="col-6 col-lg-6 col-xl-6">
+                                                        <div class="card radius-10">
+                                                            <div class="card-body" style="height:250px">
+                                                                <p class="text-center">Dew Point</p>
+                                                                <div echarts [options]="chartOption9"
+                                                            style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                        </div>
+                                                        <div echarts [options]="linechartOption9"
+                                                        style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                            
+                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--end row-->
+                                            </div>
+                
+                                        </div>
+                                        <!--end row-->
+                                        </div>
+
+                                        <!-- Dosing -->
+                                        <div class="tab-pane fade active" id="dosing" role="tabpanel">
+                                          <div class="row">
+          
+                                              <div class="col-12 col-lg-6 col-xl-6">
+                                                  <div class="row">
+                                                      <div class="col-6 col-lg-6 col-xl-6">
+                                                          <div class="card radius-10 overflow-hidden">
+                                                              <div class="card-body" style="height:250px">
+                                                                  <p class="text-center">PH</p>
+                                                                  <div echarts [options]="chartOption10"
+                                                                  style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                              </div>
+                                                              <div echarts [options]="linechartOption10"
+                                                              style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                                  
+                                                          </div>
+                                                              </div>
+          
+                                                          </div>
+          
+                                                      </div>
+                                                      <div class="col-6 col-lg-6 col-xl-6">
+                                                          <div class="card radius-10">
+                                                              <div class="card-body" style="height:250px">
+                                                                  <p class="text-center">EC</p>
+                                                                  <div echarts [options]="chartOption11"
+                                                                  style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                              </div>
+                                                              <div echarts [options]="linechartOption11"
+                                                              style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                                  
+                                                          </div>
+          
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <!--end row-->
+                                              </div>
+          
+          
+                                              <div class="col-12 col-lg-6 col-xl-6">
+                                                  <div class="row">
+                                                      <div class="col-6 col-lg-6 col-xl-6">
+                                                          <div class="card radius-10">
+                                                              <div class="card-body" style="height:250px">
+                                                                  <p class="text-center">Dissolved Oxygen</p>
+                                                                  <div echarts [options]="chartOption12"
+                                                                  style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                              </div>
+                                                              <div echarts [options]="linechartOption12"
+                                                              style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                                  
+                                                          </div>
+          
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-6 col-lg-6 col-xl-6">
+                                                          <div class="card radius-10">
+                                                              <div class="card-body" style="height:250px">
+                                                                  <p class="text-center">Nutrient Temperature
+                                                                  </p>
+                                                                  <div echarts [options]="chartOption13"
+                                                                  style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                              </div>
+                                                              <div echarts [options]="linechartOption13"
+                                                              style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                                  
+                                                          </div>
+          
+                                                              </div>
+                                                          </div>
+                                                      </div>
+          
+                                                  </div>
+                                                  <!--end row-->
+                                              </div>
+          
+                                          </div>
+                                          <!--end row-->
+          
+                                          <div class="row">
+          
+                                              <div class="col-12 col-lg-6 col-xl-6">
+                                                  <div class="row">
+                                                      <div class="col-6 col-lg-6 col-xl-6">
+                                                          <div class="card radius-10 overflow-hidden">
+                                                              <div class="card-body" style="height:250px">
+                                                                  <p class="text-center">Solar Radiation</p>
+                                                                  <div echarts [options]="chartOption14"
+                                                            style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                        </div>
+                                                        <div echarts [options]="linechartOption14"
+                                                        style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                            
+                                                    </div>
+          
+                                                              </div>
+          
+                                                          </div>
+          
+                                                      </div>
+          
+                                                  </div>
+                                                  <!--end row-->
+                                              </div>
+          
+                                          </div>
+                                      </div>
+                                        <!-- Dosing End -->
+
+                                        <!-- Irrigation -->
+
+                                        <div class="tab-pane fade active" id="irrigation" role="tabpanel">
+
+                                          <div class="row">
+          
+                                              <div class="col-12 col-lg-6 col-xl-6">
+                                                  <div class="row">
+                                                      <div class="col-6 col-lg-6 col-xl-6">
+                                                          <div class="card radius-10 overflow-hidden">
+                                                              <div class="card-body" style="height:250px">
+                                                                  <p class="text-center">Nutrient Level</p>
+                                                                  <div echarts [options]="chartOption15"
+                                                                  style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                              </div>
+                                                              <div echarts [options]="linechartOption15"
+                                                              style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                                  
+                                                          </div>
+          
+                                                              </div>
+          
+                                                          </div>
+          
+                                                      </div>
+                                                      <div class="col-6 col-lg-6 col-xl-6">
+                                                          <div class="card radius-10">
+                                                              <div class="card-body" style="height:250px">
+                                                                  <p class="text-center">Solar Radiation</p>
+                                                                  <div echarts [options]="chartOption16"
+                                                                  style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                              </div>
+                                                              <div echarts [options]="linechartOption16"
+                                                              style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                                  
+                                                          </div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <!--end row-->
+                                              </div>
+          
+          
+                                              <div class="col-12 col-lg-6 col-xl-6">
+                                                  <div class="row">
+                                                      <div class="col-6 col-lg-6 col-xl-6">
+                                                          <div class="card radius-10">
+                                                              <div class="card-body" style="height:250px">
+                                                                  <p class="text-center">Inlet Flow Rate</p>
+                                                                  <div echarts [options]="chartOption17"
+                                                            style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                        </div>
+                                                        <div echarts [options]="linechartOption17"
+                                                        style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                            
+                                                    </div>
+          
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-6 col-lg-6 col-xl-6">
+                                                          <div class="card radius-10">
+                                                              <div class="card-body" style="height:250px">
+                                                                  <p class="text-center">Outlet Flow Rate</p>
+                                                                  <div echarts [options]="chartOption18"
+                                                                  style="width:auto;height:135px;position: relative;bottom: 35px;">
+                                                              </div>
+                                                              <div echarts [options]="linechartOption18"
+                                                              style="width:auto;height:195px;position: relative;bottom: 110px;left:10px">
+                                                                  
+                                                          </div>
+          
+                                                              </div>
+                                                          </div>
+                                                      </div>
+          
+                                                  </div>
+                                                  <!--end row-->
+                                              </div>
+          
+                                          </div>
+                                      </div>
+                                        <!-- Irrigation End -->
+
+
+
+
+                                       
+                                      
+                                      </div>
+                                        <!-- tab content -->
+
+
+                
+              </div>
+              </div>
+
+        </div>
+        </div>
+
+        </div>
+        </div>
+        <!-- <div echarts [options]="chartOption" style="width:320px;height:200px" class="demo-chart"></div>  -->
+    </div>
+
+      <div class="alert alert-warning" *ngSwitchCase="false">
+        <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
+        <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign in</a
+        ><span jhiTranslate="global.messages.info.authenticated.suffix"
+          >, you can try the default accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
+          password="user").</span
+        >
+      </div>
+
+      <div class="alert alert-warning" *ngSwitchCase="false">
+        <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>&nbsp;
+        <a class="alert-link" routerLink="account/register" jhiTranslate="global.messages.info.register.link">Register a new account</a>
+      </div>
+    </div>
+
+    
+  </div>
+</div>

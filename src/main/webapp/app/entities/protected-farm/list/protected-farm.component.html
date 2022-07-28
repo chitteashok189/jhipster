@@ -1,0 +1,92 @@
+<div>
+  <h2 id="page-heading" data-cy="ProtectedFarmHeading">
+    <span jhiTranslate="blogApp.protectedFarm.home.title">Protected Farms</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="blogApp.protectedFarm.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-protected-farm"
+        [routerLink]="['/protected-farm/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="blogApp.protectedFarm.home.createLabel"> Create a new Protected Farm </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="protectedFarms?.length === 0">
+    <span jhiTranslate="blogApp.protectedFarm.home.notFound">No protectedFarms found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="protectedFarms && protectedFarms.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="blogApp.protectedFarm.protectedFarmID">Protected Farm ID</span></th>
+          <th scope="col"><span jhiTranslate="blogApp.protectedFarm.protectedFarmName">Protected Farm Name</span></th>
+          <th scope="col"><span jhiTranslate="blogApp.protectedFarm.protectedFarmType">Protected Farm Type</span></th>
+          <th scope="col"><span jhiTranslate="blogApp.protectedFarm.protectedFarmSubType">Protected Farm Sub Type</span></th>
+          <th scope="col"><span jhiTranslate="blogApp.protectedFarm.protectedFarmDescription">Protected Farm Description</span></th>
+          <th scope="col"><span jhiTranslate="blogApp.protectedFarm.farm">Farm</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let protectedFarm of protectedFarms; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/protected-farm', protectedFarm.id, 'view']">{{ protectedFarm.id }}</a>
+          </td>
+          <td>{{ protectedFarm.protectedFarmID }}</td>
+          <td>{{ protectedFarm.protectedFarmName }}</td>
+          <td jhiTranslate="{{ 'blogApp.ProFarmType.' + protectedFarm.protectedFarmType }}">{{ protectedFarm.protectedFarmType }}</td>
+          <td jhiTranslate="{{ 'blogApp.ProSubType.' + protectedFarm.protectedFarmSubType }}">{{ protectedFarm.protectedFarmSubType }}</td>
+          <td>{{ protectedFarm.protectedFarmDescription }}</td>
+          <td>
+            <div *ngIf="protectedFarm.farm">
+              <a [routerLink]="['/farm', protectedFarm.farm?.id, 'view']">{{ protectedFarm.farm?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/protected-farm', protectedFarm.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/protected-farm', protectedFarm.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(protectedFarm)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

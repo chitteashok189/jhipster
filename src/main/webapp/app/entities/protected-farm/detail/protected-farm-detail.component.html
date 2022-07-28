@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="protectedFarm">
+      <h2 data-cy="protectedFarmDetailsHeading"><span jhiTranslate="blogApp.protectedFarm.detail.title">Protected Farm</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ protectedFarm.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.protectedFarm.protectedFarmID">Protected Farm ID</span></dt>
+        <dd>
+          <span>{{ protectedFarm.protectedFarmID }}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.protectedFarm.protectedFarmName">Protected Farm Name</span></dt>
+        <dd>
+          <span>{{ protectedFarm.protectedFarmName }}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.protectedFarm.protectedFarmType">Protected Farm Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'blogApp.ProFarmType.' + protectedFarm.protectedFarmType }}">{{ protectedFarm.protectedFarmType }}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.protectedFarm.protectedFarmSubType">Protected Farm Sub Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'blogApp.ProSubType.' + protectedFarm.protectedFarmSubType }}">{{
+            protectedFarm.protectedFarmSubType
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.protectedFarm.protectedFarmDescription">Protected Farm Description</span></dt>
+        <dd>
+          <span>{{ protectedFarm.protectedFarmDescription }}</span>
+        </dd>
+        <dt><span jhiTranslate="blogApp.protectedFarm.farm">Farm</span></dt>
+        <dd>
+          <div *ngIf="protectedFarm.farm">
+            <a [routerLink]="['/farm', protectedFarm.farm?.id, 'view']">{{ protectedFarm.farm?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/protected-farm', protectedFarm.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

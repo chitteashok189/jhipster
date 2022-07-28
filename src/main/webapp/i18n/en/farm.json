@@ -1,0 +1,30 @@
+{
+  "blogApp": {
+    "farm": {
+      "home": {
+        "title": "Farms",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Farm",
+        "createOrEditLabel": "Create or edit a Farm",
+        "notFound": "No Farms found"
+      },
+      "created": "A new Farm is created with identifier {{ param }}",
+      "updated": "A Farm is updated with identifier {{ param }}",
+      "deleted": "A Farm is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Farm {{ id }}?"
+      },
+      "detail": {
+        "title": "Farm"
+      },
+      "id": "ID",
+      "farmID": "Farm ID",
+      "pformID": "Pform ID",
+      "farmName": "Farm Name",
+      "farmType": "Farm Type",
+      "farmSubType": "Farm Sub Type",
+      "farmDescription": "Farm Description",
+      "protectedFarm": "Protected Farm"
+    }
+  }
+}
